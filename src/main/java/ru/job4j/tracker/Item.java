@@ -12,6 +12,12 @@ public class Item {
     public LocalDateTime getCreated() {
         return created;
     }
+    public Item(){
+    }
+    public Item(String name){
+    }
+    public Item(int id){
+    }
     public void setId(int id) {
         this.id = id;
     }
