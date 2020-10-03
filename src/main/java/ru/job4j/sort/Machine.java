@@ -7,12 +7,12 @@ public class Machine {
         int[] rsl = new int[100];
         int remainder = money - price;
         int size = 0;
-        int index = 0;
+        int i = 0;
         for(int coin : COINS){
             while (remainder - coin >= 0){
                 remainder -= coin;
-                rsl[index] = coin;
-                index++;
+                rsl[i] = coin;
+                i++;
                 size++;
             }
         }
