@@ -13,22 +13,12 @@ public class Tracker {
         return item;
     }
     public Item[] findAll(){
-       Item[] itemsWithoutNull = new Item[items.length];
-       int size = 0;
-       for(int i = 0; i < items.length;i++){
-           Item itemW = items[i];
-           if(itemW != null){
-               itemsWithoutNull[size] = itemW;
-               size++;
-           }
-           itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-       }
-       return itemsWithoutNull;
+       return Arrays.copyOf(items, size);
     }
     public Item[] findByName(String key){
-        int size = 0;
-        Item[] equalName = new Item[items.length];
-        for (int index = 0; index < items.length; index++) {
+        this.size = size;
+        Item[] equalName = new Item[this.size];
+        for (int index = 0; index < this.size; index++) {
             Item name = items[index];
             if (name.getName().equals(key)) {
                 equalName[size] = name;
