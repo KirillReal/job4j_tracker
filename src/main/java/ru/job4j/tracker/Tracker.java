@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import javax.swing.*;
 import java.util.Arrays;
 
 public class Tracker {
@@ -53,5 +54,16 @@ public class Tracker {
         int index = indexOf(id);
         /* Если индекс найден возвращаем item, иначе null */
         return index != -1 ? items[index] : null;
+    }
+    public boolean delete(int id) {
+        boolean check = true;
+        int index = indexOf(id);
+        System.arraycopy(items, index + 1, items, index, size - index);
+        items[size - 1] = null;
+        size--;
+        if(index == -1){
+            check = false;
+        }
+        return check;
     }
 }
