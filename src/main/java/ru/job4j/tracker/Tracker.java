@@ -16,7 +16,7 @@ public class Tracker {
        return Arrays.copyOf(items, size);
     }
     public Item[] findByName(String key){
-        this.size = size;
+        int size = 0;
         Item[] equalName = new Item[this.size];
         for (int index = 0; index < this.size; index++) {
             Item name = items[index];
@@ -25,7 +25,7 @@ public class Tracker {
                 size++;
             }
         }
-        return equalName;
+        return Arrays.copyOf(items,size);
     }
     public Item findById(int id) {
         Item rsl = null;
