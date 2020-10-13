@@ -9,13 +9,11 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            String mess = "Select:";
-            int select = Integer.valueOf(input.askStr(mess));
+            int select = Integer.valueOf(input.askStr("Select:"));
             if(select >= 0 && select <= 6) {
                 if (select == 0) {
                     System.out.println("=== Create a new Item ====");
-                    String msg = "Enter a name:";
-                    String name = input.askStr(msg);
+                    String name = input.askStr("Enter a name:");
                     Item item = new Item(name);
                     tracker.add(item);
                 } else if (select == 1) {
@@ -24,10 +22,8 @@ public class StartUI {
                         System.out.println(showAll[index].toString());
                     }
                 } else if (select == 2) {
-                    String msg = "Enter id selected item:";
-                    int inputUser = Integer.valueOf(input.askStr(msg));
-                        System.out.println("Enter new name:");
-                        String name = input.askStr(msg);
+                    int inputUser = Integer.valueOf(input.askStr("Enter id selected item:"));
+                        String name = input.askStr("Enter new name:");
                         Item item = new Item(name);
                     if (tracker.replace(inputUser, item)) {
                         System.out.println("Replacement of the application completed");;
@@ -35,16 +31,14 @@ public class StartUI {
                         System.out.println("Id is not found");
                     }
                 } else if (select == 3) {
-                    String msg = "Enter the id you want to delete:";
-                    int id = Integer.valueOf(input.askStr(msg));
+                    int id = Integer.valueOf(input.askStr("Enter the id you want to delete:"));
                     if (tracker.delete(id)) {
                         System.out.println("Order deletion completed");
                     } else {
                         System.out.println("Error");
                     }
                 } else if (select == 4) {
-                    String msg = "Enter the id you want to find:";
-                    int id = Integer.valueOf(input.askStr(msg));
+                    int id = Integer.valueOf(input.askStr("Enter the id you want to find:"));
                     Item obj = tracker.findById(id);
                     if (obj != null) {
                         System.out.println(obj);
@@ -53,8 +47,7 @@ public class StartUI {
                     }
                 } else if (select == 5) {
                     System.out.println("=== Find items by name ===");
-                    String msg = "Enter name: ";
-                    Item[] obj = tracker.findByName(input.askStr(msg));
+                    Item[] obj = tracker.findByName(input.askStr("Enter name: "));
                     if(obj.length != 0){
                     for (int i = 0; i < obj.length; i++)
                         System.out.println(obj[i].toString());
