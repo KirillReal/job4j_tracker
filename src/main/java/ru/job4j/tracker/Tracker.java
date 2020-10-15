@@ -26,7 +26,7 @@ public class Tracker {
                 size++;
             }
         }
-        return Arrays.copyOf(items,size);
+        return Arrays.copyOf(equalName,size);
     }
     private int indexOf(int id) {
         int rsl = -1;
