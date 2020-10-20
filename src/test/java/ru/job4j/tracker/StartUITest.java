@@ -10,14 +10,14 @@ public class StartUITest {
     public void whenCreateItem() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Input in =  new StubInput(
-                new String[] {"0", "Item name", "1"}
+        Input in = new StubInput(
+                new String[]{"0", "Item name", "1"}
         );
         UserAction[] actions = {
                 new CreateAction(out),
                 new Exit(out)
         };
-        new StartUI(out).init(in,tracker,actions);
+        new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
 
@@ -36,7 +36,7 @@ public class StartUITest {
                 new ReplaceAction(out),
                 new Exit(out)
         };
-        new StartUI(out).init(in,tracker,actions);
+        new StartUI(out).init(in, tracker, actions);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is(replacedName));
     }
@@ -49,13 +49,13 @@ public class StartUITest {
         Item item = tracker.add(new Item("Deleted item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), "1"}
+                new String[]{"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
                 new DeleteAction(out),
                 new Exit(out)
         };
-        new StartUI(out).init(in,tracker,actions);
+        new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
@@ -75,6 +75,7 @@ public class StartUITest {
                         + "0. Exit" + System.lineSeparator()
                         + "=== Exit ===" + System.lineSeparator()));
     }
+
     @Test
     public void whenFindAllAction() {
         Output out = new StubOutput();
@@ -82,13 +83,13 @@ public class StartUITest {
         Item item = tracker.add(new Item("Items"));
         Input in = new StubInput(
                 new String[]
-                        {"0","1",}
+                        {"0", "1",}
         );
         UserAction[] actions = {
                 new ShowAction(out),
                 new Exit(out)
         };
-        new StartUI(out).init(in,tracker,actions);
+        new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("Menu." + System.lineSeparator()
                 + "0. Show all items" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
@@ -98,6 +99,7 @@ public class StartUITest {
                 + "1. Exit" + System.lineSeparator()
                 + "=== Exit ===" + System.lineSeparator()));
     }
+
     @Test
     public void whenFindById() {
         Output out = new StubOutput();
@@ -105,13 +107,13 @@ public class StartUITest {
         Item item = tracker.add(new Item("Item Name"));
         Input in = new StubInput(
                 new String[]
-                        {"0",String.valueOf(item.getId()),"1"}
+                        {"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
                 new FindById(out),
                 new Exit(out)
         };
-        new StartUI(out).init(in,tracker,actions);
+        new StartUI(out).init(in, tracker, actions);
         //Item findId = tracker.findById(item.getId());
         assertThat(out.toString(), is("Menu." + System.lineSeparator()
                 + "0. === Find item by Id ===" + System.lineSeparator()
@@ -122,6 +124,7 @@ public class StartUITest {
                 + "1. Exit" + System.lineSeparator()
                 + "=== Exit ===" + System.lineSeparator()));
     }
+
     @Test
     public void whenFindByName() {
         Output out = new StubOutput();
@@ -129,13 +132,13 @@ public class StartUITest {
         Item item = tracker.add(new Item("Item Name"));
         Input in = new StubInput(
                 new String[]
-                        {"0",item.getName(),"1",}
+                        {"0", item.getName(), "1",}
         );
         UserAction[] actions = {
                 new FindItemsByName(out),
                 new Exit(out)
         };
-        new StartUI(out).init(in,tracker,actions);
+        new StartUI(out).init(in, tracker, actions);
         Item findName = tracker.findById(item.getId());
         assertThat(out.toString(), is("Menu." + System.lineSeparator()
                 + "0. === Find items by name ===" + System.lineSeparator()
@@ -148,4 +151,25 @@ public class StartUITest {
                 + "=== Exit ===" + System.lineSeparator()));
     }
 
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{ /* Пункты меню: неверный, верный.*/}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "0. Exit%n"
+                                + "Wrong input, you can select: 0 .. 0%n"
+                                + "Menu.%n"
+                                + "0. Exit%n"
+                )
+        ));
+    }
 }
