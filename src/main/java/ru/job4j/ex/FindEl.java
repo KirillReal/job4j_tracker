@@ -7,11 +7,9 @@ public class FindEl {
             if(value[i].equals(key)){
                 rsl = i;
                 break;
-            }else if(rsl == -1){
-                throw new ElementNotFoundException();
             }
         }
-        return rsl;
+        throw  new ElementNotFoundException();
     }
 
     public static void main(String[] args) {
