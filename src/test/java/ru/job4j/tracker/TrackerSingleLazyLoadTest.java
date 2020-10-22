@@ -8,8 +8,8 @@ public class TrackerSingleLazyLoadTest {
 
     @Test
     public void getInstance() {
-        final TrackerSingleLazyLoad trackerSingleLazyLoad = TrackerSingleLazyLoad.getInstance();
-        final TrackerSingleLazyLoad trackerSingleLazyLoad1 = TrackerSingleLazyLoad.getInstance();
-        assertSame(trackerSingleLazyLoad,trackerSingleLazyLoad1);
+        final Tracker tracker = TrackerSingleLazyLoad.getInstance().getTracker();
+        final Tracker tracker1 = TrackerSingleLazyLoad.getInstance().getTracker();
+        assertSame(tracker,tracker1);
     }
 }

@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 public class TrackerEagerLoad {
     private static final TrackerEagerLoad INSTANCE = new TrackerEagerLoad();
 
+    private Tracker tracker = new Tracker();
     private TrackerEagerLoad() {
     }
 
@@ -10,8 +11,8 @@ public class TrackerEagerLoad {
         return INSTANCE;
     }
 
-    public Item add(Item model) {
-        return model;
+    public Tracker getTracker(){
+        return tracker;
     }
 
     public static void main(String[] args) {

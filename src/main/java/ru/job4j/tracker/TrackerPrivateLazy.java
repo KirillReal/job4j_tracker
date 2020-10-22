@@ -3,19 +3,17 @@ package ru.job4j.tracker;
 public class TrackerPrivateLazy {
     private TrackerPrivateLazy() {
     }
-
+    private Tracker tracker = new Tracker();
     public static TrackerPrivateLazy getInstance() {
         return Holder.INSTANCE;
-    }
-
-    public Item add(Item model) {
-        return model;
     }
 
     private static final class Holder {
         private static final TrackerPrivateLazy INSTANCE = new TrackerPrivateLazy();
     }
-
+    public Tracker getTracker(){
+        return tracker;
+    }
     public static void main(String[] args) {
         TrackerPrivateLazy tracker = TrackerPrivateLazy.getInstance();
     }

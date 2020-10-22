@@ -14,7 +14,7 @@ public class TrackerSingleLazyLoad {
         return instance;
     }
 
-    public Item add(Item model) {
-        return model;
+    public Tracker getTracker(){
+        return tracker;
     }
 }
