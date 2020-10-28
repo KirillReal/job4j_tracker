@@ -5,20 +5,18 @@ public class ConvertList2Array {
     public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
-        int row = 0;
-        int cell = list.size() / groups;
-        int newIndex = 0;
-        for (int i[] : array ) {
-            int index = 0;
-            for(int j : i){
-                if(newIndex < list.size()){
-                    i[index++] = list.get(newIndex++);
-                }
+        int row = 0, cell = 0;
+        int index = 0;
+        for (Integer i : list) {
+            array[row][cell] = i;
+            cell++;
+            if (cell == cells) {
+                cell = 0;
+                row++;
             }
         }
         return array;
     }
-
     public static void main(String[] args) {
         List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7);
         int[][] rsl = toArray(list, 3);
