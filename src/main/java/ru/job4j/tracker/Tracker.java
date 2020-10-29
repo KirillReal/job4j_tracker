@@ -2,36 +2,37 @@ package ru.job4j.tracker;
 
 import javax.swing.*;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tracker {
-    private final Item[] items = new Item[100];
+    private final List<Item> items = new ArrayList<Item>();
     private int ids = 1;
     private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
-        items[size++] = item;
+        items.add(item);
         return item;
     }
-    public Item[] findAll(){
-       return Arrays.copyOf(items, size);
+    public List<Item> findAll(){
+       return (ArrayList<Item>) items;
     }
-    public Item[] findByName(String key){
+    public List<Item> findByName(String key){
         int size = 0;
-        Item[] equalName = new Item[this.size];
-        for (int index = 0; index < this.size; index++) {
-            Item name = items[index];
+        List<Item> equalName = new ArrayList<Item>();
+        for (int index = 0; index < items.size(); index++) {
+            Item name = items.get(index);
             if (name.getName().equals(key)) {
-                equalName[size] = name;
-                size++;
+                equalName.add(name);
             }
         }
-        return Arrays.copyOf(equalName,size);
+        return equalName;
     }
     private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < size; index++) {
-            if (items[index].getId() == id) {
+            if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
             }
@@ -43,7 +44,7 @@ public class Tracker {
         boolean check = index != -1;
         if (check) {
             item.setId(id);
-            items[index] = item;
+            items.set(index,item);
             check = true;
         }
         return check;
@@ -53,15 +54,14 @@ public class Tracker {
         /* Находим индекс */
         int index = indexOf(id);
         /* Если индекс найден возвращаем item, иначе null */
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
     public boolean delete(int id) {
         boolean check = false;
         int index = indexOf(id);
         if(index != -1){
-            System.arraycopy(items, index + 1, items, index, size - index);
-            items[size - 1] = null;
-            size--;
+            //System.arraycopy(items, index + 1, items, index, size - index);
+            items.remove(index);
             check = true;
         }
         return check;

@@ -13,7 +13,8 @@ public class FindById implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        int id = Integer.valueOf(input.askStr("Enter the id you want to find:"));
+        //int id = Integer.valueOf(input.askStr("Enter the id you want to find:"));
+        int id = input.askInt("Enter the id of the application:");
         Item obj = tracker.findById(id);
         if (obj != null) {
             out.println(obj);
