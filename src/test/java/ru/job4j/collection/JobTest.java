@@ -18,10 +18,10 @@ public class JobTest {
     }
     @Test
     public void whenComparatorByNameAndPriorityReverse2() {
-        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
+        Comparator<Job> cmpNamePriority = new JobDescByPriority().thenComparing(new JobDescByName());
         int rsl = cmpNamePriority.compare(
-                new Job("Fix bug", 1),
-                new Job("Impl task", 0)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 1)
         );
         assertThat(rsl, greaterThan(0));
     }
