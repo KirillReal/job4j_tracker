@@ -14,7 +14,7 @@ public class JobTest {
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
         );
-        assertThat(rsl, lessThan(0));
+        assertThat(rsl, greaterThan(0));
     }
     @Test
     public void whenComparatorByNameAndPriorityReverse2() {
@@ -29,8 +29,8 @@ public class JobTest {
     public void whenNameComparator() {
         Comparator<Job> cmpName = new JobDescByName();
         int rsl = cmpName.compare(
-                new Job("Fix bug", 1),
-                new Job("Impl task", 0)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 1)
         );
         assertThat(rsl,greaterThan(0));
     }
@@ -41,7 +41,7 @@ public class JobTest {
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
         );
-        assertThat(rsl,greaterThan(0));
+        assertThat(rsl,lessThan(0));
     }
     @Test
     public void whenPriority() {
