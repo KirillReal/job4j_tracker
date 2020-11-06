@@ -12,11 +12,9 @@ public class LexSort implements Comparator<String> {
         int sort = 0;
         List<String> list1 = Arrays.asList(left.split("\\ "));
         List<String> list2 = Arrays.asList(right.split("\\ "));
-        for(int i = 0; i < 1;i++) {
-            int listOne = Integer.parseInt(list1.get(i).substring(0, list1.get(i).length() - 1));
-            int listTwo = Integer.parseInt(list2.get(i).substring(0, list2.get(i).length() - 1));
+            int listOne = Integer.parseInt(list1.get(0).substring(0, list1.get(0).length() - 1));
+            int listTwo = Integer.parseInt(list2.get(0).substring(0, list2.get(0).length() - 1));
             sort = Integer.compare(listOne, listTwo);
-        }
         return sort;
     }
 }
