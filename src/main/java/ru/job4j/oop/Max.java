@@ -3,8 +3,7 @@ package ru.job4j.oop;
 public class Max {
     public static int Max2(int a, int b){
         boolean yes = a >= b;
-        int result = yes ?  a : b;
-        return result;
+        return yes ?  a : b;
     }
     public static int Max3(int a, int b, int c){
         int rsl = Max2(b,c);

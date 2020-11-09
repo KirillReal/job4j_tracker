@@ -4,6 +4,6 @@ public class Surgeon extends Doctor{
     private int numberOfInstruments;
     private int Patient;
     public boolean operate(int Patient){
-        return Boolean.parseBoolean(null);
+        return false;
     }
 }

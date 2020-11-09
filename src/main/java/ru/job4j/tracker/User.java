@@ -1,9 +1,9 @@
 package ru.job4j.tracker;
 
 public class User {
-    private int id;
-    private String username;
-    private String password;
+    private final int id;
+    private final String username;
+    private final String password;
 
     @Override
     public String toString() {
