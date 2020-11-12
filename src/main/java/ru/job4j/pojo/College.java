@@ -6,6 +6,10 @@ public class College {
         student.setName("Danilov Kirill Andreevich");
         student.setNumberOfGroup("381802");
         student.setReceiptDate(new Date());
-        System.out.println("Student:" + student.getName() + System.lineSeparator() + student.getNumberOfGroup() + System.lineSeparator() + student.getReceiptDate());
+        System.out.println("Student:" + student.getName()
+                + System.lineSeparator()
+                + student.getNumberOfGroup()
+                + System.lineSeparator()
+                + student.getReceiptDate());
     }
 }

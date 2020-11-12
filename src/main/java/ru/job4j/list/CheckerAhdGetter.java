@@ -5,7 +5,7 @@ import java.util.List;
 public class CheckerAhdGetter {
     public static String getElement(List<String> list) {
         String one = "";
-        if(!list.isEmpty()) {
+        if (!list.isEmpty()) {
             one = list.get(0);
         }
         return one;

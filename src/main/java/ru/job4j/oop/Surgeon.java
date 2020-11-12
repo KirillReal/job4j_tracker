@@ -1,9 +1,10 @@
 package ru.job4j.oop;
 
-public class Surgeon extends Doctor{
+public class Surgeon extends Doctor {
     private int numberOfInstruments;
-    private int Patient;
-    public boolean operate(int Patient){
+    private int patient;
+
+    public boolean operate(int patient) {
         return false;
     }
 }

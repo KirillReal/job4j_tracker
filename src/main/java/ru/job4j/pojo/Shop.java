@@ -4,9 +4,9 @@ public class Shop {
     public static int indexOfNull(Product[] products) {
         int i;
         int rsl = -1;
-        for(i = 0; i < products.length;i++){
+        for (i = 0; i < products.length; i++) {
             Product product = products[i];
-            if(product == null){
+            if (product == null) {
                 rsl = i;
                 break;
             }

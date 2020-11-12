@@ -10,6 +10,6 @@ public class TrackerPrivateLazyTest {
     public void getInstance() {
         final Tracker tracker = TrackerSingleLazyLoad.getInstance().getTracker();
         final Tracker tracker1 = TrackerSingleLazyLoad.getInstance().getTracker();
-        assertSame(tracker,tracker1);
+        assertSame(tracker, tracker1);
     }
 }

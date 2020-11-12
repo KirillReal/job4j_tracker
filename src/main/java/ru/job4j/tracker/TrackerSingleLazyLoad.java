@@ -4,6 +4,7 @@ public class TrackerSingleLazyLoad {
     private static TrackerSingleLazyLoad instance;
 
     private final Tracker tracker = new Tracker();
+
     private TrackerSingleLazyLoad() {
     }
 
@@ -14,7 +15,7 @@ public class TrackerSingleLazyLoad {
         return instance;
     }
 
-    public Tracker getTracker(){
+    public Tracker getTracker() {
         return tracker;
     }
 }

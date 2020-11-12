@@ -6,8 +6,8 @@ public class ExamplePolyUsage {
         Vehicle train = new Train();
         Vehicle bus = new Bus1();
 
-        Vehicle[] vehicles = new Vehicle[]{plane,train,bus};
-        for(Vehicle v : vehicles){
+        Vehicle[] vehicles = new Vehicle[]{plane, train, bus};
+        for (Vehicle v : vehicles) {
             v.move();
         }
     }

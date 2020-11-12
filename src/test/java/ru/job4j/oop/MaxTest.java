@@ -9,18 +9,19 @@ public class MaxTest {
 
     @Test
     public void max2() {
-        int result = Max.Max2(1, 2);
+        int result = Max.max2(1, 2);
         assertThat(result, is(2));
     }
+
     @Test
     public void max3() {
-        int result = Max.Max3(3,5,7);
+        int result = Max.max3(3, 5, 7);
         assertThat(result, is(7));
     }
 
     @Test
     public void max4() {
-        int result = Max.Max4(5,41,412,53);
+        int result = Max.max4(5, 41, 412, 53);
         assertThat(result, is(412));
     }
 }

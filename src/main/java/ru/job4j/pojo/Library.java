@@ -6,7 +6,7 @@ public class Library {
         Book bookB = new Book("Java: The Complete Reference", 1500);
         Book bookC = new Book("Clean code", 1200);
         Book bookD = new Book("Kotlin In-Depth", 900);
-        Book library[] = new Book[4];
+        Book[] library = new Book[4];
         library[0] = bookA;
         library[1] = bookB;
         library[2] = bookC;

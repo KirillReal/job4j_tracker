@@ -10,6 +10,6 @@ public class TrackerSingleTest {
     public void getInstance() {
         final Tracker instance = TrackerSingle.INSTANCE.getInstance();
         final Tracker instanceCheck = TrackerSingle.INSTANCE.getInstance();
-        assertSame(instance,instanceCheck);
+        assertSame(instance, instanceCheck);
      }
 }

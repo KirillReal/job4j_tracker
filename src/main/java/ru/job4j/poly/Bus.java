@@ -11,7 +11,7 @@ public class Bus implements Transport {
     }
 
     @Override
-    public double fillUp(int Price) {
-        return Price;
+    public double fillUp(int price) {
+        return price;
     }
 }

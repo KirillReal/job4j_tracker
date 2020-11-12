@@ -40,8 +40,10 @@ public class StartUITest {
         actions.add(new ReplaceAction(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll().get(0).getName(), is(replacedName));
+        List<Item> all = tracker.findAll();
+        assertThat(all.get(0).getName(), is(replacedName));
     }
+
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
@@ -82,7 +84,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Items"));
         Input in = new StubInput(
                 new String[]
-                        {"0", "1",}
+                        {"0", "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ShowAction(out));
@@ -129,7 +131,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Item Name"));
         Input in = new StubInput(
                 new String[]
-                        {"0", item.getName(), "1",}
+                        {"0", item.getName(), "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemsByName(out));
@@ -151,7 +153,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{ "1", "0"}
+                new String[] {"1",  "0"}
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();

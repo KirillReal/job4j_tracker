@@ -5,19 +5,23 @@ public class Profession {
     private int age;
     private String education;
     private String surname;
-    public String getName(){
+
+    public String getName() {
         this.name = name;
         return null;
     }
-    public String getSurname(){
+
+    public String getSurname() {
         this.surname = surname;
         return null;
     }
-    public String getEducation(){
+
+    public String getEducation() {
         this.education = education;
         return null;
     }
-    public int setAge(){
+
+    public int setAge() {
         this.age = age;
         return age;
     }

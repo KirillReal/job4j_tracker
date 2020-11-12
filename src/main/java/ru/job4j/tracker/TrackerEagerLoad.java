@@ -1,17 +1,18 @@
 package ru.job4j.tracker;
 
 public class TrackerEagerLoad {
-    private static final TrackerEagerLoad instance = new TrackerEagerLoad();
+    private static final TrackerEagerLoad INSTANCE = new TrackerEagerLoad();
 
     private final Tracker tracker = new Tracker();
+
     private TrackerEagerLoad() {
     }
 
     public static TrackerEagerLoad getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
-    public Tracker getTracker(){
+    public Tracker getTracker() {
         return tracker;
     }
 

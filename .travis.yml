@@ -17,3 +17,6 @@ notifications:
       -kiril5471710@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+env:
+  global:
+    - CODECOV_TOKEN="e036e8af-c622-465b-9626-fff25bf18589"

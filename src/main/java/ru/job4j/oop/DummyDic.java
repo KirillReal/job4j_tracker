@@ -4,9 +4,10 @@ public class DummyDic {
     public static String engToRus(String eng) {
         return "Неизвестное слово " + eng;
     }
+
     public static void main(String[] args) {
-        String Hi = "Hi";
-        String say = engToRus(Hi);
+        String hi = "Hi";
+        String say = engToRus(hi);
         System.out.println(say);
     }
 }
