@@ -21,4 +21,4 @@ public class Article {
         }
         return check;
     }
-}//Сложность алгоритма 0(N)
+}//Сложность алгоритма 0(N^2)
