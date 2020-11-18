@@ -1,8 +1,6 @@
 package ru.job4j.collection;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
 
 public class Article {
     public static boolean generateBy(String origin, String line) {
@@ -13,12 +11,13 @@ public class Article {
         String[] originMass = origin1.split(" ");//O(N)
         List<String> originList = new ArrayList<>(Arrays.asList(originMass));//O(N)
         List<String> lineList = new ArrayList<>(Arrays.asList(lineMass));//O(N)
-        for (String el : lineList) {//0(N)
-            if ((!originList.contains(el))) { //O(N)
+        Set set = new HashSet(originList);
+        for (String el: lineList){//0(N)
+            if ((!set.contains(el))) { //O(1)
                 check = false;
                 break;
             }
         }
         return check;
     }
-}//Сложность алгоритма 0(N^2)
+}//Сложность алгоритма 0(N)
