@@ -4,14 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Profiles {
-    private static Profile profile;
-    private Address address;
-    public static List<Address> collect(List<Profiles> profiles){
+     List<Address> collect(List<Profile> profiles){
        return profiles
                .stream()
                .map(
-                  profiles1 -> profile.getAddress()
-               )
-               .collect(Collectors.toList());
+                       p -> p.getAddress()
+               ).collect(Collectors.toList());
     }
 }
