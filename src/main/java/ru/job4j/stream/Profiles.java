@@ -6,11 +6,15 @@ import java.util.stream.Collectors;
 public class Profiles {
     private Address address;
 
+    public Address getAddress() {
+        return address;
+    }
+
     public static List<Address> collect(List<Profiles> profiles){
        return profiles
                .stream()
                .map(
-                       profile -> profile.address
+                       profiles1 -> profiles1.getAddress()
                )
                .collect(Collectors.toList());
     }
