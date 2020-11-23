@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -14,7 +11,7 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if (user != null) {
+        if (user != null ) {
             List<Account> list = users.get(user);
                 if (!(list).contains(account)) {
                     list.add(account);
@@ -23,29 +20,16 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-        User find = null;
-        for (User user: users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                find = user;
-                break;
-            }
-        }
-        return find;
+       return users.keySet().stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst().orElse(null);
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        Account findRequisite = null;
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> accounts = users.get(user);
-            for (Account accountRequisite : accounts) {
-                if (accountRequisite.getRequisite().equals(requisite)) {
-                    findRequisite = accountRequisite;
-                    break;
-                }
-            }
-        }
-        return findRequisite;
+        return (users.get(findByPassport(passport)).stream()
+                .filter(account -> account.getRequisite().equals(requisite))
+                .findFirst()
+                .get());
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
