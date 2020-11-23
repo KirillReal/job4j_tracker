@@ -7,12 +7,14 @@ import java.util.TreeMap;
 import static java.util.stream.Collectors.toMap;
 
 public class StudentToMap {
-    public static List<Student> studentsToMap(List<Student> students){
-        Map<String, Student> map;
-        map = students.stream().collect(toMap(
-                Student::getSurname,
-                student -> student,
-                (o1,o2 ) -> o1, TreeMap::new));
-        return (List<Student>) map;
+    public static void main(String[] args) {
+        List<Student> students = List.of(
+                new Student(50,"Ivanov"),
+                new Student(60,"Markelov"),
+                new Student(40,"Melchanov"),
+                new Student(50,"Efremov")
+        );
+        Map<String,Object> map = students.stream().collect(toMap(Student::getSurname, student -> student,(o1,o2) -> o1,TreeMap::new));
+        
     }
 }
