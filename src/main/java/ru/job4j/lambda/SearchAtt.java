@@ -5,23 +5,25 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class SearchAtt {
-    public static List<Attachment> filter(Predicate<Attachment> attachmentPredicate,List<Attachment> attachmentList){
+    public static List<Attachment> filter(Predicate<Attachment> attachmentPredicate,
+                                          List<Attachment> attachmentList) {
         List<Attachment> conditionRsllist = new ArrayList<>();
         for (Attachment el: attachmentList) {
-            if(attachmentPredicate.test(el)){
+            if (attachmentPredicate.test(el)) {
                 conditionRsllist.add(el);
             }
         }
         return conditionRsllist;
     }
+
     public static List<Attachment> filterSize(List<Attachment> list) {
         Predicate<Attachment> p = attachment -> attachment.getSize() < 100;
-        return filter(p,list);
+        return filter(p, list);
     }
 
     public static List<Attachment> filterName(List<Attachment> list) {
         Predicate<Attachment> p = attachment -> attachment.getName().contains("bug");
-        return filter(p,list);
+        return filter(p, list);
     }
 
     public static void main(String[] args) {

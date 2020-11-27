@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 
 public class MatrixTest {
     @Test
-    public void Sort(){
-        Integer[][] matrix = {{1,2},{3,4}};
+    public void sort() {
+        Integer[][] matrix = {{1, 2}, {3, 4}};
         List<Integer> rsl = Matrix.convert(matrix);
         List<Integer> expected = new ArrayList<>();
         expected.add(1);

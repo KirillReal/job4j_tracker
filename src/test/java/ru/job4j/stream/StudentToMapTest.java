@@ -12,16 +12,16 @@ public class StudentToMapTest {
     @Test
     public void convertToMap() {
         List<Student> students = List.of(
-                new Student(50,"Ivanov"),
-                new Student(60,"Petrov"),
-                new Student(40,"Suvorov"),
-                new Student(50,"Efimov")
+                new Student(50, "Ivanov"),
+                new Student(60, "Petrov"),
+                new Student(40, "Suvorov"),
+                new Student(50, "Efimov")
         );
-        Map<String,Student> expected = new TreeMap<>();
-        expected.put("Ivanov",students.get(0));
-        expected.put("Petrov",students.get(1));
-        expected.put("Suvorov",students.get(2));
-        expected.put("Efimov",students.get(3));
-        assertThat(StudentToMap.convertToMap(students),is(expected));
+        Map<String, Student> expected = new TreeMap<>();
+        expected.put("Ivanov", students.get(0));
+        expected.put("Petrov", students.get(1));
+        expected.put("Suvorov", students.get(2));
+        expected.put("Efimov", students.get(3));
+        assertThat(StudentToMap.convertToMap(students), is(expected));
     }
 }

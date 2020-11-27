@@ -27,7 +27,7 @@ public class SchoolTest {
     @Test
     public void whenCollectClassA() {
         School sc = new School();
-        Predicate<Student> pr = st -> st.getScore() >= 70 && st.getScore() <= 100;;
+        Predicate<Student> pr = st -> st.getScore() >= 70 && st.getScore() <= 100;
         List<Student> rsl = sc.collect(students, pr);
         List<Student> expected = new ArrayList<>();
         expected.add(new Student(70, "Surname7"));
@@ -39,7 +39,7 @@ public class SchoolTest {
     @Test
     public void whenCollectClassB() {
         School sc = new School();
-        Predicate<Student> pr = st -> st.getScore() >= 50 && st.getScore() < 70;;
+        Predicate<Student> pr = st -> st.getScore() >= 50 && st.getScore() < 70;
         List<Student> rsl = sc.collect(students, pr);
         List<Student> expected = new ArrayList<>();
         expected.add(new Student(50, "Surname5"));
@@ -50,7 +50,7 @@ public class SchoolTest {
     @Test
     public void whenCollectClassC() {
         School sc = new School();
-        Predicate<Student> pr = st -> st.getScore() > 0 && st.getScore() < 50;;
+        Predicate<Student> pr = st -> st.getScore() > 0 && st.getScore() < 50;
         List<Student> rsl = sc.collect(students, pr);
         List<Student> expected = new ArrayList<>();
         expected.add(new Student(10, "Surname1"));

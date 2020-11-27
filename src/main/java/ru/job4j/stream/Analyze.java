@@ -44,7 +44,7 @@ public class Analyze {
                 .collect(Collectors.groupingBy(Subject::getName,
                         Collectors.summingDouble(Subject::getScore)))
                 .entrySet().stream()
-                .map(p -> new Tuple(p.getKey(),p.getValue()))
+                .map(p -> new Tuple(p.getKey(), p.getValue()))
                 .max(Comparator.comparing(Tuple::getScore))
                 .orElse(null);
     }

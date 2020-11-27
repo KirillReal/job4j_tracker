@@ -16,17 +16,19 @@ public class DiapasonTest {
         List<Double> expected = Arrays.asList(11D, 13D, 15D);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenSQRTFunction() {
         Diapason function = new Diapason();
-        List<Double> result = function.diapason(3, 6, x -> x*x );
+        List<Double> result = function.diapason(3, 6, x -> x * x);
         List<Double> expected = Arrays.asList(9D, 16D, 25D);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenExponentFunction() {
         Diapason function = new Diapason();
-        List<Double> result = function.diapason(2, 5, x -> Math.pow(x, x) );
+        List<Double> result = function.diapason(2, 5, x -> Math.pow(x, x));
         List<Double> expected = Arrays.asList(4D, 27D, 256D);
         assertThat(result, is(expected));
     }

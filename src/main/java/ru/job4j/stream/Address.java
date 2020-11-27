@@ -6,7 +6,16 @@ public class Address {
     private final String city;
     private final String street;
 
+    private final int apartment;
+
     private final int home;
+
+    public Address(String city, String street, int home, int apartment) {
+        this.city = city;
+        this.street = street;
+        this.home = home;
+        this.apartment = apartment;
+    }
 
     public int getApartment() {
         return apartment;
@@ -24,18 +33,14 @@ public class Address {
         return street;
     }
 
-    private final int apartment;
-    public Address(String city, String street, int home, int apartment) {
-        this.city = city;
-        this.street = street;
-        this.home = home;
-        this.apartment = apartment;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Address address = (Address) o;
         return home == address.home
                 && apartment == address.apartment

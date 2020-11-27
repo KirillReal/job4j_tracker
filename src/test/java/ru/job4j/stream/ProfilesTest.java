@@ -9,24 +9,23 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-
 public class ProfilesTest {
-    Profile profile = new Profile();
-    Profile profile1 = new Profile();
-    Profile profile2 = new Profile();
-    Profile profile3 = new Profile();
-    Profile profile4 = new Profile();
+    private final Profile profile = new Profile();
+    private final Profile profile1 = new Profile();
+    private final Profile profile2 = new Profile();
+    private final Profile profile3 = new Profile();
+    private final Profile profile4 = new Profile();
 
-    Address address = new Address("1", "Yablonevaya", 4,3);
-    Address address1 = new Address("2", "Gagarina", 3, 21);
-    Address address2 = new Address("3", "Rodionova", 11, 12);
-    Address address3 = new Address("4", "Brinskogo", 5, 2);
-    Address address4 = new Address("1", "Yablonevaya", 4,3);
+    private final Address address = new Address("1", "Yablonevaya", 4, 3);
+    private final Address address1 = new Address("2", "Gagarina", 3, 21);
+    private final Address address2 = new Address("3", "Rodionova", 11, 12);
+    private final Address address3 = new Address("4", "Brinskogo", 5, 2);
+    private final Address address4 = new Address("1", "Yablonevaya", 4, 3);
 
-    List<Profile> profileList = new ArrayList<>();
+    private final List<Profile> profileList = new ArrayList<>();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         profile.setAddress(address);
         profile1.setAddress(address1);
         profile2.setAddress(address2);
@@ -40,7 +39,7 @@ public class ProfilesTest {
     }
 
     @Test
-    public void whenProfileListThenAddressList(){
+    public void whenProfileListThenAddressList() {
         List<Address> rsl = Profiles.collect(profileList);
         List<Address> extended = new ArrayList<>();
         extended.add(address);

@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class Profile {
     private Address address;
-    public Profile(){
+
+    public Profile() {
     }
 
     public void setAddress(Address address) {
@@ -17,11 +18,14 @@ public class Profile {
         return address;
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Profile)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Profile)) {
+            return false;
+        }
         Profile profile = (Profile) o;
         return getAddress().equals(profile.getAddress());
     }
