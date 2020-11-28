@@ -6,7 +6,7 @@ public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        users.putIfAbsent(user, new ArrayList<>());
+        users.put(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
@@ -27,11 +27,14 @@ public class BankService {
     }
 
     public Optional<Account> findByRequisite(String passport, String requisite) {
-
-        return users.get(findByPassport(passport).isPresent())
-                .stream()
-                .filter(account -> account.getRequisite().equals(requisite))
-                .findFirst();
+        var user = findByPassport(passport);
+        Optional<Account> rsl = Optional.empty();
+        if (user.isPresent()) {
+           rsl = users.get(user.get()).stream()
+                    .filter(account -> account.getRequisite().equals(requisite))
+                    .findFirst();
+        }
+        return rsl;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
