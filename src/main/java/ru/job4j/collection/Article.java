@@ -11,9 +11,9 @@ public class Article {
         String[] originMass = origin1.split(" ");
         List<String> originList = new ArrayList<>(Arrays.asList(originMass));
         List<String> lineList = new ArrayList<>(Arrays.asList(lineMass));
-        Set set = new HashSet(originList);
+        //Set set = new HashSet(originList);
         for (String el: lineList) {
-            if ((!set.contains(el))) {
+            if ((!originList.contains(el))) {
                 check = false;
                 break;
             }
