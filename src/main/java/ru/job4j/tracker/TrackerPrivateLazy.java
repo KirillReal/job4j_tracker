@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 public class TrackerPrivateLazy {
-    private final Tracker tracker = new Tracker();
+    private final MemTracker tracker = new MemTracker();
 
     private TrackerPrivateLazy() {
     }
@@ -14,7 +14,7 @@ public class TrackerPrivateLazy {
         private static final TrackerPrivateLazy INSTANCE = new TrackerPrivateLazy();
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 

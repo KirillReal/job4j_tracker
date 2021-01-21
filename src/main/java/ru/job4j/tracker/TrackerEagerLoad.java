@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class TrackerEagerLoad {
     private static final TrackerEagerLoad INSTANCE = new TrackerEagerLoad();
 
-    private final Tracker tracker = new Tracker();
+    private final MemTracker tracker = new MemTracker();
 
     private TrackerEagerLoad() {
     }
@@ -12,7 +12,7 @@ public class TrackerEagerLoad {
         return INSTANCE;
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 

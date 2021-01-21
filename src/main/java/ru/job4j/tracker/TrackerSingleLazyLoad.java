@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class TrackerSingleLazyLoad {
     private static TrackerSingleLazyLoad instance;
 
-    private final Tracker tracker = new Tracker();
+    private final MemTracker tracker = new MemTracker();
 
     private TrackerSingleLazyLoad() {
     }
@@ -15,7 +15,7 @@ public class TrackerSingleLazyLoad {
         return instance;
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 }

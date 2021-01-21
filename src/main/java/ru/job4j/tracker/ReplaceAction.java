@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.sql.SQLException;
+
 public class ReplaceAction implements UserAction {
     private final Output out;
 
@@ -12,9 +14,10 @@ public class ReplaceAction implements UserAction {
         return "=== Replace item ===";
     }
 
+
     @Override
-    public boolean execute(Input input, Tracker tracker) {
-        int inputUser = Integer.valueOf(input.askStr("Enter id selected item:"));
+    public boolean execute(Input input, Store tracker) throws SQLException {
+        int inputUser = Integer.parseInt(input.askStr("Enter id selected item:"));
         out.println("=== Replace Item ====");
         String name = input.askStr("Enter new name:");
         Item item = new Item(name);

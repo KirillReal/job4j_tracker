@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import ru.job4j.poly.Transport;
 
+import java.sql.SQLException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, MemTracker tracker, List<UserAction> actions) throws SQLException {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -34,10 +35,10 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(output));
         actions.add(new ShowAction(output));
