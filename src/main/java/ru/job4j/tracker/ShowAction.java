@@ -15,8 +15,6 @@ public class ShowAction implements UserAction {
         return "Show all items";
     }
 
-
-
     @Override
     public boolean execute(Input input, Store tracker) throws SQLException {
         List<Item> items = tracker.findAll();

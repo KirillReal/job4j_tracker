@@ -6,17 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class SqlTracker implements Store{
+public class SqlTracker implements Store {
     private Connection cn;
 
     public SqlTracker() {
 
     }
-    public SqlTracker (Connection cn) {
+
+    public SqlTracker(Connection cn) {
         this.cn = cn;
     }
+
     public void init() {
-        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = SqlTracker.class.getClassLoader().
+                getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
@@ -39,13 +42,13 @@ public class SqlTracker implements Store{
 
     @Override
     public Item add(Item item) throws SQLException {
-        try(PreparedStatement statement =
+        try (PreparedStatement statement =
                 cn.prepareStatement("insert into items(name) values  (?)",
                         Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.execute();
-            try(ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                if(generatedKeys.next()){
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
                     item.setId(generatedKeys.getInt(1));
                 }
             }
@@ -75,8 +78,6 @@ public class SqlTracker implements Store{
         }
         return result;
     }
-
-
 
     @Override
     public List<Item> findAll() throws SQLException {

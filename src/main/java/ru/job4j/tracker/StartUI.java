@@ -14,7 +14,8 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, MemTracker tracker, List<UserAction> actions) throws SQLException {
+    public void init(Input input, MemTracker tracker, List<UserAction> actions)
+            throws SQLException {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
