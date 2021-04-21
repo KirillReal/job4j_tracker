@@ -16,8 +16,8 @@ public class ReplaceAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Store tracker) throws SQLException {
-        int inputUser = Integer.parseInt(input.askStr("Enter id selected item:"));
-        out.println("=== Replace Item ====");
+        int inputUser = input.askInt("Enter id selected item:");
+        out.println("=== Replace Item ===");
         String name = input.askStr("Enter new name:");
         Item item = new Item(name);
         if (tracker.replace(inputUser, item)) {
