@@ -73,12 +73,7 @@
             <version>3.5.13</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>ru.job4j</groupId>
-            <artifactId>tracker</artifactId>
-            <version>1.0</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
     <build>
         <plugins>

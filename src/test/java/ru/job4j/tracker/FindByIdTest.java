@@ -13,7 +13,7 @@ import static org.mockito.Mockito.when;
 public class FindByIdTest {
 
     @Test
-    public void whenExecuteThenSuccess() throws SQLException{
+    public void whenExecuteThenSuccess() throws SQLException {
         Output out = new StubOutput();
         Store tracker = new MemTracker();
         tracker.add(new Item("Item"));

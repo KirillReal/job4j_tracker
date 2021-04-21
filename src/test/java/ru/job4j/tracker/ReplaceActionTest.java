@@ -28,7 +28,8 @@ public class ReplaceActionTest {
         rep.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is("=== Replace Item ===" + ln + "Replacement of the application completed" + ln));
+        assertThat(out.toString(),
+                is("=== Replace Item ===" + ln + "Replacement of the application completed" + ln));
         assertThat(tracker.findAll().get(0).getName(), is(replacedName));
     }
 }
