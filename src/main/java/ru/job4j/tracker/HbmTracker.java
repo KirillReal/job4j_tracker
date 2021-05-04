@@ -22,67 +22,80 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public Item add(Item item) throws SQLException {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        session.save(item);
-        session.getTransaction().commit();
-        session.close();
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            session.save(item);
+            session.getTransaction().commit();
+        }
         return item;
     }
 
     @Override
     public boolean replace(int id, Item item) throws SQLException {
-        item.setId(id);
-        Session session = sf.openSession();
-        session.beginTransaction();
-        session.update(item);
-        session.getTransaction().commit();
-        session.close();
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            Item itemNew = session.get(Item.class, id);
+            if (itemNew != null) {
+                itemNew.setName(item.getName());
+                session.update(itemNew);
+            } else {
+                return false;
+            }
+            session.getTransaction().commit();
+        }
         return true;
     }
 
     @Override
     public boolean delete(int id) throws SQLException {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        Item item = new Item(null);
-        item.setId(id);
-        session.delete(item);
-        session.getTransaction().commit();
-        session.close();
-        return true;
+        boolean result = false;
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            Item item = session.get(Item.class, id);
+            if (item != null) {
+                session.delete(item);
+                result = true;
+                session.getTransaction().commit();
+            }
+            return result;
+        }
     }
 
     @Override
     public List<Item> findAll() throws SQLException {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        List<Item> result = session.createQuery("from ru.job4j.tracker.Item").list();
-        session.getTransaction().commit();
-        session.close();
+        List<Item> result;
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            result = session.createQuery("from Item", Item.class).list();
+            session.getTransaction().commit();
+        }
         return result;
     }
 
     @Override
     public List<Item> findByName(String key) throws SQLException {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        List<Item> result = session.createQuery("from ru.job4j.tracker.Item "
-                + "where name = ' " + key + " ' "
-        ).list();
-        session.getTransaction().commit();
-        session.close();
-        return result;
+        List<Item> list;
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            list = session.createQuery(
+                    "from Item where name = : paramName",
+                    Item.class)
+                    .setParameter("paramName", key)
+                    .list();
+            session.getTransaction().commit();
+        }
+        return list;
     }
 
     @Override
     public Item findById(int id) throws SQLException {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        Item result = session.get(Item.class, id);
-        session.getTransaction().commit();
-        session.close();
-        return result;
+        Item item;
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            item = session.get(Item.class, id);
+            session.getTransaction().commit();
+        }
+        return item;
     }
 
     @Override
