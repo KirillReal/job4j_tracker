@@ -5,16 +5,16 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import ru.job4j.tracker.ConsoleInput;
 
+@Component
 @Scope("prototype")
 public class StartUI {
-
+    @Autowired
     private Store store;
 
     private ConsoleInput input;
 
     @Autowired
-    public void setStoreInput(Store store, ConsoleInput input) {
-        this.store = store;
+    public void setStoreInput(ConsoleInput input) {
         this.input = input;
     }
 
