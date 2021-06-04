@@ -5,8 +5,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SqlTracker implements Store {
+    private static final Logger LOG = LogManager.getLogger(SqlTracker.class.getName());
     private Connection cn;
 
     public SqlTracker() {
@@ -86,6 +89,25 @@ public class SqlTracker implements Store {
         ConsumerException<PreparedStatement, Item> func = (statement, item) -> { };
         return select(searchedItem, sql, func);
     }
+
+    public void findAll(Observe<Item> observe) throws InterruptedException {
+        LOG.debug("Find all reactive all");
+        List<Item> rsl = new ArrayList<>();
+        try (Statement st = cn.createStatement()) {
+            ResultSet rs = st.executeQuery("select * from items;");
+            while (rs.next()) {
+                Item item = new Item(
+                        rs.getInt("id"),
+                        rs.getString("name"));
+                observe.receive(item);
+                rsl.add(item);
+            }
+                LOG.debug("Selecting complete. Found items: {}", rsl.size());
+            } catch (SQLException e) {
+                LOG.error("Something went wrong", e);
+            }
+            LOG.debug("Found {} items", rsl.size());
+        }
 
     @Override
     public List<Item> findByName(String key) throws SQLException {
